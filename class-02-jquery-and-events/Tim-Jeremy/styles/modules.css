@@ -1,7 +1,11 @@
-/* TODO: Give the site header a nice background color, from your selected color scheme. */
+/* DONE: Give the site header a nice background color, from your selected color scheme. */
 
+/* MODULE Styles
+http://paletton.com/#uid=13q0u0kllllaFw0g0qFqFg0w0aF
+=======================================*/
 .site-header {
   padding: .1em;
+  background-color: #6D92A0;
 }
 
 .main-nav {
@@ -17,11 +21,13 @@
   border-bottom: 1px solid #ccc;
 }
 
-/* TODO: Style the filters so they look good on small screens:
+/* DONE: Style the filters so they look good on small screens:
     Use the full width, and remove the list bullet. */
 
 #filters {
-  padding: 0;
+  padding-top: 20px;
+  min-width: auto;
+  width: 100%;
 }
 
 #filters select {

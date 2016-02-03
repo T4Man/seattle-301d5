@@ -5,6 +5,7 @@ body {
   line-height: 1.5;
   font-size: 100%;
   color: #313131;
+  padding: 10px;
 }
 
 hr {
@@ -29,6 +30,7 @@ address {
 }
 
 /*LINK STYLES
+http://paletton.com/#uid=13q0u0kllllaFw0g0qFqFg0w0aF
 =======================================*/
 
 a, a:link, a:active {
@@ -37,9 +39,9 @@ a, a:link, a:active {
 }
 
 a:hover, a:focus {
-  color: ##009933;
+  color: #103E50;
 }
 
 a:visited {
-  color: ##009933;
+  color: #457485;
 }
