@@ -1,21 +1,17 @@
 // Configure a view object, to hold all our functions for dynamic updates and article-related event handlers.
 var articleView = {};
 
-articleView.populateFilters = function() {
-  $('article').each(function() {
-    if (!$(this).hasClass('template')) {
-      var val = $(this).find('address a').text();
-      var optionTag = '<option value="' + val + '">' + val + '</option>';
-      $('#author-filter').append(optionTag);
-
-      val = $(this).attr('data-category');
-      optionTag = '<option value="' + val + '">' + val + '</option>';
-      if ($('#category-filter option[value="' + val + '"]').length === 0) {
-        $('#category-filter').append(optionTag);
-      }
-    }
-  });
+Article.prototype.populateAuthFilters = function() {
+  var authTemplate = Handlebars.compile($('#authfilter-template').text());
+  return authTemplate(this);
 };
+
+Article.prototype.populateCatFilters = function () {
+  var catTemplate = Handlebars.compile($('#catfilter-template').text());
+  return catTemplate(this);
+};
+
+
 
 articleView.handleAuthorFilter = function() {
   $('#author-filter').on('change', function() {
@@ -63,9 +59,14 @@ articleView.setTeasers = function() {
 };
 
 $(document).ready(function() {
-  articleView.populateFilters();
+  articles.forEach(function(a){
+    $('#author-filter').append(a.populateAuthFilters());
+  });
+  articles.forEach(function(a){
+    $('#category-filter').append(a.populateCatFilters());
+  });
   articleView.handleCategoryFilter();
   articleView.handleAuthorFilter();
   articleView.handleMainNav();
   articleView.setTeasers();
-})
+});
