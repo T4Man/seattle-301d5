@@ -41,7 +41,7 @@ Article.loadAll = function(rawData) {
 // This function will retrieve the data from either a local or remote source,
 // and process it, then hand off control to the View.
 Article.getAll = function(){
-  $.getJSON('/data/hackerIpsum.json', function(data) {
+  $.getJSON('data/hackerIpsum.json', function(data) {
     localStorage.rawData = JSON.stringify(data);
     Article.loadAll(data);
     articleView.initIndexPage();
@@ -67,10 +67,10 @@ Article.fetchAll = function() {
           articleView.initIndexPage();
           }
         }
-    })
+    });
   } else {
       Article.getAll();
-    };
+    }
 
 
     // TODO: When we don't already have the rawData,
