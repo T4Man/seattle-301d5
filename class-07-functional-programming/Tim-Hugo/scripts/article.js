@@ -68,11 +68,11 @@
   Article.allAuthors = function() {
     return Article.all.map(function(article) {
       return article.author
-    }).reduce(function(a, b) {
-      if (a.indexOf(b) < 0) {
-        a.push(b);
+    }).reduce(function(names, name) {
+      if (names.indexOf(name) === -1) {
+        names.push(name);
       }
-      return a;
+      return names;
     }, []);
   };
   Article.numWordsByAuthor = function() {

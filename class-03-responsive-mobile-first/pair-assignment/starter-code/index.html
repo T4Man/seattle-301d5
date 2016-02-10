@@ -3,26 +3,13 @@
   <head>
     <meta charset="UTF-8">
     <title>Blog</title>
+    <!-- TODO: Add a meta tag to properly set the viewport and initial scale -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="vendor/styles/normalize.css">
     <link rel="stylesheet" href="styles/icons.css">
     <link rel="stylesheet" href="styles/base.css">
     <link rel="stylesheet" href="styles/layout.css">
     <link rel="stylesheet" href="styles/modules.css">
-
-    <script id="article-template" type="text/x-handlebars-template">
-      <article class="clearfix" data-author="{{author}}" data-category="{{category}}">
-        <header>
-          <h1>{{title}}</h1>
-          <div class="byline">
-            By <address><a href="{{authorUrl}}">{{author}}</a></address>
-            {{publishStatus}}
-          </div>
-        </header>
-        <section class="article-body">{{{body}}}</section>
-        <a href="#" class="read-on">Read on &rarr;</a>
-      </article>
-    </script>
   </head>
   <body>
     <header class="site-header clearfix">
@@ -33,7 +20,7 @@
         <h2>The shocking power of static pages</h2>
       </section>
       <nav class="main-nav">
-        <div class="icon-menu"></div>
+        <!-- TODO: Add a hamburger menu icon here. -->
         <ul>
           <li class="tab" data-content="articles"><a href="#" class="icon-home"> Home</a></li>
           <li class="tab" data-content="about"><a href="#" class="icon-address-book"> About</a></li>
@@ -58,6 +45,17 @@
             </li>
           </ul>
         </div>
+        <article class="template template" data-category="cat">
+          <header>
+            <h1>Title</h1>
+            <div class="byline">
+              By <address><a href="">Author Name</a></address>
+              published <time pubdate datetime="2000-01-01">Publish Time</time>
+            </div>
+          </header>
+          <section class="article-body"></section>
+          <a href="#" class="read-on">Read on &rarr;</a>
+        </article>
       </section>
       <section id="about" class="tab-content">
         <header>
@@ -77,18 +75,9 @@
       &copy; 2015 Code Fellows | Static Blog | Happy Ipsum!
     </footer>
 
-    <script src="/vendor/scripts/jquery-2.1.4.js"></script>
-    <script src="/vendor/scripts/handlebars.js"></script>
-    <script src="/vendor/scripts/marked.js"></script>
-    <!-- TODO: Include the script files we need, that give us an API to the WebSQL feature of Chrome: -->
-    <script src="/vendor/scripts/html5sql.js"></script>
-    <script src="/scripts/webdb.js"></script>
-    <script src="/scripts/article.js"></script>
-    <script src="/scripts/articleView.js"></script>
-    <script>
-      // DONE: Ensure that a database table for articles exists, every time we load the page.
-      Article.createTable();
-      Article.fetchAll(articleView.initIndexPage);
-    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="scripts/blogArticles.js"></script>
+    <script src="scripts/article.js"></script>
+    <script src="scripts/articleView.js"></script>
   </body>
 </html>
