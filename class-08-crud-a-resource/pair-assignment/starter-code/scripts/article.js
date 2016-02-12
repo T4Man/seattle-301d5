@@ -25,11 +25,15 @@
       'CREATE TABLE IF NOT EXISTS articles (' +
       'id INTEGER PRIMARY KEY, ' +
       'title VARCHAR(255) NOT NULL, ' +
-      'author VARCHAR()'
-      ');',
+      'author VARCHAR(255) NOT NULL ' +
+      'authorURL VARCHAR(255) NOT NULL' +
+      'category VARCHAR(20) NOT NULL' +
+      'publishedOn DATE NOT NULL' +
+      'body TEXT NOT NULL;',
+      ')',
       function(result) {
         console.log('Successfully set up the articles table.', result);
-        if (callback) callback(); //where does this come from??
+        if (callback) callback();
       }
     );
   };
@@ -38,7 +42,9 @@
   Article.truncateTable = function(callback) {
     webDB.execute(
       'DELETE FROM articles;',
-      callback
+      function(result) {
+      console.log('Deleted records from table', result);
+      };
     );
   };
 
@@ -61,7 +67,7 @@
     webDB.execute(
       [
         {
-          'sql' DELETE FROM articles WHERE id=?;,
+          'sql': 'DELETE FROM articles WHERE id=?;',
           'data': [this.id]
         }
       ],
