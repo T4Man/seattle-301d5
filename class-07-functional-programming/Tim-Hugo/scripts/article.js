@@ -61,13 +61,13 @@
       })
       .reduce(function(a, b) {
         return a + b; // Sum up all the values in the collection
-      })
+      });
   };
 
   // DONE: Chain together a `map` and a `reduce` call to produce an array of unique author names.
   Article.allAuthors = function() {
     return Article.all.map(function(article) {
-      return article.author
+      return article.author;
     }).reduce(function(names, name) {
       if (names.indexOf(name) === -1) {
         names.push(name);
@@ -88,10 +88,10 @@
           }).reduce(function(a, b) {
             return a + b;
           })
-          // wordCount: this.allAuthors().map(function).reduce() // REVISIT
+          // wordCount: this.allAuthors().map(function).reduce()
           // someKey: someValOrFunctionCall().map(...).reduce(...), ...
-      }
-    })
+      };
+    });
   };
   module.Article = Article;
 })(window);
