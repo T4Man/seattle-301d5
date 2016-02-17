@@ -6,8 +6,9 @@ articleView.populateFilters = function() {
     if (!$(this).hasClass('template')) {
       var val = $(this).find('address a').text();
       var optionTag = '<option value="' + val + '">' + val + '</option>';
-      $('#author-filter').append(optionTag);
-
+      if ($('#author-filter option[value="' + val + '"]').length === 0) {
+        $('#author-filter').append(optionTag);
+      }
       val = $(this).attr('data-category');
       optionTag = '<option value="' + val + '">' + val + '</option>';
       if ($('#category-filter option[value="' + val + '"]').length === 0) {
@@ -102,7 +103,7 @@ articleView.create = function() {
 
 articleView.initIndexPage = function() {
   Article.all.forEach(function(a){
-    $('#articles').append(a.toHtml())
+    $('#articles').append(a.toHtml());
   });
 
   articleView.populateFilters();

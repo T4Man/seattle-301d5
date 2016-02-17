@@ -4,6 +4,6 @@ Asynchronous connections and standardized data formats? This all sounds like a s
 
 ## Class Videos
  - [Part 1 of 4](https://youtu.be/i8W4RoRjZCY)
- - [Part 2 of 4]()
- - [Part 3 of 4]()
- - [Part 4 of 4]()
+ - [Part 2 of 4](https://youtu.be/X7HpglgPQLM)
+ - [Part 3 of 4](https://youtu.be/oodNkt9G8Fk)
+ - [Part 4 of 4](https://youtu.be/54OvYqLBHus)
