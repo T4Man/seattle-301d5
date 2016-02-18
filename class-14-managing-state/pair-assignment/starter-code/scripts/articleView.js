@@ -13,10 +13,24 @@
   };
 
   // COMMENT: What does this method do?  What is it's execution path?
+  //The populateFilters method is attached to the articleView object that accepts
+  //no parameters. The compile method of the Handlebars object takes the text of
+  //the option-template jquery object and assigns it to the
+  //template variable. The map method iterates over allAuthors (loaded from the DOM)
+  // and returns each author name
+  //to the template which is then assigned to the options variable.
+  //A test is applied to prevent duplication by establishing if the option element
+  //in the author-filter jQuery object is already populated and appends
+  //the DOM with the value of the option variable when true.
+  //The allCategories function (which triggers a SQL query) attached to the Article object is called and passed
+  //a function as an argument. That function takes rows as a parameter. A test is applied
+  //checking if the option element of the category-filter jQuery object is empty.
+  //If true the append method on category-filter is invoked and passes the map method
+  //on the rows array as an argument. The map function accepts row as a parameter
+  //and returns the category value of each row to the template variable.
   articleView.populateFilters = function() {
     var options,
-      template = Handlebars.compile($('#option-template').text());
-
+    template = Handlebars.compile($('#option-template').text());
     // Example of using model method with FP, synchronous approach:
     // NB: This method is dependant on info being in the DOM. Only authors of shown articles are loaded.
     options = Article.allAuthors().map(function(author) { return template({val: author}); });
@@ -38,6 +52,13 @@
   };
 
   // COMMENT: What does this method do?  What is it's execution path?
+  //The handleFilters function is attached to the articleView object which accepts no
+  //parameters. An event listener is attached to the filters jQuery object to detect
+  //when the user selects an option. When triggered, it will invoke (only once)
+  //an anonymous function that removes '-filter' from the id of the selected option.
+  //That value is then assigned to the resource variable. A string is passed to the
+  //page method that has been reformatted into a valid URI. This will create a route
+  //to the correct view for our page.
   articleView.handleFilters = function() {
     $('#filters').one('change', 'select', function() {
       resource = this.id.replace('-filter', '');
@@ -118,6 +139,14 @@
   };
 
   // COMMENT: What does this method do?  What is it's execution path?
+  //The index function is attached to the articleView object and accepts articles
+  //as a parameter. We then show all elements with the id of 'articles' and hide
+  //all siblings of 'articles'. Any article elements within the section with the id
+  //'article' are removed. The forEach method is applied to the passed in articles
+  //which takes a function as an argument with 'a' as a parameter. The render function
+  //is invoked which appends the 'articles' section in the DOM with a new HTML anchor
+  //element. The populateFilters and handleFilters methods on the
+  //articleView object are then called.
   articleView.index = function(articles) {
     $('#articles').show().siblings().hide();
 
@@ -128,6 +157,7 @@
 
     articleView.populateFilters();
     // COMMENT: What does this method do?  What is it's execution path?
+    //The handleFilters function is called to change to the appropriate view.
     articleView.handleFilters();
 
     // DONE: Replace setTeasers with just the truncation logic, if needed:
