@@ -8,6 +8,8 @@
   };
 
   // COMMENT: What does this method do?  What is it's execution path?
+  //Iterates through articles
+  //Calls findWhere (SQL statement) passes 'id' as field
   articlesController.loadById = function(ctx, next) {
     var articleData = function(article) {
       ctx.articles = article;
