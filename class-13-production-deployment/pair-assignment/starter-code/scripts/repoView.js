@@ -10,14 +10,14 @@
 
   var render = function(repo) {
     return $('<li>')
-      .html('<a href="' + repo.html_url + '">' + repo.full_name + '</a>');
+      .html('<a href="' + repo.html_url + '">' + repo.name + '</a>');
   };
 
   repoView.index = function() {
     ui();
 
     $('#about ul').append(
-      repos.with('forks_count').map(render)
+      repos.with('name').map(render)
     );
   };
 
